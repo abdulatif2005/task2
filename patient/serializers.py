@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Patient, Diagnose
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
 class PatientSerializer(serializers.ModelSerializer):
@@ -12,3 +13,12 @@ class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
         fields = ["id", "date_of_birth", "diagnoses", "created_at"]
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        token['is_doctor'] = user.is_doctor
+        return token

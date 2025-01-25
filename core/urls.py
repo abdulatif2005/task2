@@ -22,7 +22,7 @@ from patient.views import PatientListAPIView, CustomTokenObtainPairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('patients/', PatientListAPIView.as_view()),
+    path('patients/', PatientListAPIView.as_view(), name="patients"),
     path('login/', CustomTokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view())
 

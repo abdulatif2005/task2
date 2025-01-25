@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+# проверка на получение данных если пользователь доктор
 @pytest.mark.django_db
 def test_doctor_only_view_access_granted():
     client = APIClient()
@@ -20,6 +21,7 @@ def test_doctor_only_view_access_granted():
     assert response.status_code == 200
 
 
+# проверка на не получение данных если пользователь не доктор
 @pytest.mark.django_db
 def test_doctor_only_view_access_denied():
     client = APIClient()

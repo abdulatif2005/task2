@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+# проверка на доступ если пользователь доктор
 @pytest.mark.django_db
 def test_is_doctor_permission_granted():
     factory = APIRequestFactory()
@@ -20,6 +21,7 @@ def test_is_doctor_permission_granted():
     assert permission.has_permission(request, None) is True
 
 
+# проверка на доступ если пользователь доктор
 @pytest.mark.django_db
 def test_is_doctor_permission_denied():
     factory = APIRequestFactory()

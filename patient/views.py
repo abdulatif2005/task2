@@ -5,6 +5,8 @@ from .serializers import PatientSerializer, CustomTokenObtainPairSerializer
 from .permissions import IsDoctorPermission
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+
+# ендпоинт списка пациентов
 class PatientListAPIView(generics.ListAPIView):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
@@ -12,5 +14,6 @@ class PatientListAPIView(generics.ListAPIView):
 
 
 
+# ендпоинт получения токена
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
